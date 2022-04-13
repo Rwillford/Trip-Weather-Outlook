@@ -69,7 +69,7 @@ function getFiveDay(coords){
             let date = data.daily[i].dt;
             
 
-            const card = $("<div>").addClass("card col-md-2");
+            const card = $("<div>").addClass("card row-md-2");
             const cardHeader = $("<div>").addClass("card-header");
             const cardBody = $("<div>").addClass("card-body");
             const cardTitle = $("<div>").addClass("card-title").text(moment(date).format('MMMM Do YYYY'));
@@ -77,7 +77,12 @@ function getFiveDay(coords){
             cardBody.append(cardHeader);
             card.append(cardBody);
             $(".fiveDay").append(card);
-            let futrueTemp
+            let futureTemp = $("<p>").text("Temp: " + temp + '\xB0' + 'F');
+            $(".fiveDay").append(futureTemp);
+            let futureHumidity = $("<p>").text("Humidity: " + humidity + "%");
+            $(".fiveDay").append(futureHumidity);
+            let futureWind = $("<p>").text("Wind: " + wind + "MPH");
+            $(".fiveDay").append(futureWind);
         }
     })
 }
