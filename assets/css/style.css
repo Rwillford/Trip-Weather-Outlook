@@ -12,10 +12,25 @@ body {
     padding: 5px;
 }
 
+/*Customizing cards for when there called in JS*/
 .card {
     margin: auto;
     padding: 2px
 }
+
+.card-bg {
+    background-color: #475667;
+    color: #EDEAE4;
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.jumbotron {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 /*UV Index Color Changes*/
 .low {
     background-color: green;

@@ -16,23 +16,25 @@
     <header>
         <h1 class="text-center">Weather Dashboard</h1>
     </header>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h4>Search City</h4>
-                <input id="searchInput" />
-                <button class="btn btn-primary" id="searchBtn">Search</button>
+    <section>
+        <div class="col-md-2">
+            <h4>Search City</h4>
+            <input id="searchInput" />
+            <button class="btn btn-primary" id="searchBtn">Search</button>
+            <ul class="list-group m-auto"></ul>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h3 id="cTitle" class="hide">Current Forecast</h3>
+                <div id="currentWeather" class="card col-md-9 jumbotron currentWeather hide"></div>
             </div>
-            
-            <div class="card col-md-9 jumbotron currentWeather"></div>
+            <div class="mt-2">
+                <h3 id="fTitle" class="hide">Five Day Forecast</h3>
+                <div id="fiveDay" class="row jumbotron fiveDay hide">
+            </div>
         </div>
-        <div>
-            <div class="row jumbotron fiveDay">
-            <h3>Five Day Forecast</h3>
-        </div>
-        </div>
-    </div>
+    </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
