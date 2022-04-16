@@ -19,13 +19,13 @@ $(document).ready(function(){
         
         //Adding the searched Cities into the array
         cities.push(citySearch)
-        savedCities();
+        savedCities()
 
         //Making a list of previous searched Cities
         var storedCities = JSON.parse(localStorage.getItem("cities"))
         for (var i = 0; i < cities.length; i++){
             var city = storedCities[i]
-            var listCities = $("<li>").attr("id", "listCity").addClass("list-group-item").text(city);
+            var listCities = $("<button>").attr("type", "button").addClass("list-group-item list-group-item-action savedCity").text(city);
             $(".list-group").append(listCities);
         }
             
@@ -40,6 +40,14 @@ $(document).ready(function(){
 
     })
 
+    //$("button").on('click', function(){
+       //let savedcity = $(".savedCity").text();
+        //$(".currentWeather").empty();
+        //$(".fiveDay").empty();
+        //getCurrentWeather(savedcity)
+        //getFiveDay(savedcity)
+    //})
+
     function savedCities() {
         //Saving to local storage
         localStorage.setItem("cities", JSON.stringify(cities))
@@ -53,7 +61,7 @@ $(document).ready(function(){
         fetch(currentWeatherUrl)
         .then((response) => response.json())
         .then((data) => {
-            console.log("currentDay", data)
+            //console.log("currentDay", data)
             //Setting the data needed
             let cityName = data.name;
             let temp = data.main.temp;
@@ -99,7 +107,7 @@ $(document).ready(function(){
         fetch(getFiveDayUrl)
         .then((response)=> response.json())
         .then((data)=>{
-            console.log("data from FIVE DAY", data.daily[0])
+            //console.log("data from FIVE DAY", data.daily[0])
         
             //UV Index for the Current Weather (In here so I dont have to pull another API to just get the UV)
             let uvIndex = $("<p>").addClass("card-text").text("UV Index: " + data.daily[0].uvi)
@@ -116,18 +124,23 @@ $(document).ready(function(){
                 $(uvIndex).addClass("xtreme");
             };
 
+            
             //Running a loop to grab all the data
             for(var i = 1; i < 6; i++){
                 let fiveDay = data.daily[i];
-                console.log(fiveDay)
                 let temp = data.daily[i].temp.day;
                 let humidity = data.daily[i].humidity;
                 let wind = data.daily[i].wind_speed;
-                let date = data.daily[i].dt;
+                let dates = data.daily[i].dt;
                 let icon = data.daily[i].weather[0].icon
                 let iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+                console.log(dates)
+                //let date = moment(dates[i]).format('MMMM Do YYYY');
+                    //for (let i= 1; i <= date.length; i++){
+                        //console.log("date", date)
+                //}
 
-                //Creating cards and appending to them the five day data
+                //Creating cards and appending to them the 'Five Day Forecast'
                 const card = $("<div>").addClass("card card-bg col-md-2");
                 const cardBody = $("<div>").addClass("card-body");
                 const cardTitle = $("<div>").addClass("card-title");
@@ -135,7 +148,9 @@ $(document).ready(function(){
                 cardBody.append(cardTitle);
                 card.append(cardBody);
                 $(".fiveDay").append(card);
-                let futureDate = $("<h4>").text(moment(date).format('MMMM Do YYYY'));
+                
+                //creating data to go into the cards
+                let futureDate = $("<h4>").text(moment.utc(dates[i]).format('MMMM Do YYYY'));
                 cardTitle.append(futureDate);
                 let futureIcon = $("<img>").attr('src', iconUrl);
                 cardTitle.append(futureIcon)
@@ -146,12 +161,9 @@ $(document).ready(function(){
                 let futureWind = $("<p>").text("Wind: " + wind + " MPH");
                 cardText.append(futureWind);
                 cardTitle.append(cardText)
+                console.log(futureDate.text)
             }
         })
     }
-    $(document).on('click', '#listCity', function(){
-        var previousCity = $(this).attr("listCity")
-        getCurrentWeather(previousCity);
-        getFiveDay(previousCity);
-    })
+    
 })
