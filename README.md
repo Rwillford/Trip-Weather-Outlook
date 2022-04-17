@@ -22,7 +22,8 @@ THEN I am again presented with current and future conditions for that city.<br>
 <img width="1487" alt="TWO-SS-2" src="https://user-images.githubusercontent.com/99914942/163717192-38dfb1b6-91f6-4beb-935e-377c99d40419.png">
 <img width="1568" alt="TWO-SS-1" src="https://user-images.githubusercontent.com/99914942/163717195-c557b3fc-b8b3-4949-b089-addf626a0c6a.png">
 This was a bit of a challenge for me, I had my tutor and a TA helping out with getting this right.<br>
-I hide the current weather and five day forecast jumbotrons to give the site a cleaner look without having a city searched. Once you search for a city you should get its current weather and five day forecast. The city name should then save to a list, that then can be called back to if you do so.<br>
+I hide the current weather and five day forecast jumbotrons to give the site a cleaner look without having a city searched. Once you search for a city you should get its current weather and five day forecast. The city name should then saves to a list, that you can click on to to change to different cities .<br>
 The biggest hurdle I had was getting the five day forecast dates right. It just couldn't be as simple as the current weather one. 
 
 Here is a link to the deployed application:
+https://rwillford.github.io/Trip-Weather-Outlook/
