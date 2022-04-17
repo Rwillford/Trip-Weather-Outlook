@@ -1,8 +1,7 @@
 $(document).ready(function () {
     const apiKey = "dc29ad80b0ec9912243321a6824d9baa";
     var cities = [];
-    var historyContainer = $(".list-group");
-    var searchInput = $("#search-input");
+    
     var searchHistoryContainer = $("#history");
     
     // function to render search history list
@@ -17,7 +16,6 @@ $(document).ready(function () {
         searchHistoryContainer.append(listCities);
       }
     }
-    
     //function to append search history to local storage
     function appendHistory(search) {
       if (cities.indexOf(search) !== -1) {
@@ -176,16 +174,26 @@ $(document).ready(function () {
           }
         });
     }
+    
     function searchHistoryClick(e) {
-      
       if ($(!e.target).is(".savedCity")) {
         return;
       }
       var btn = $(e.target);
       var search = $(btn).attr("data-search");
-      console.log(search);
+
+      //Empting out old data
+      $(".currentWeather").empty();
+      $(".fiveDay").empty();
+      
+      //removing the hide classes
+      $("#currentWeather").removeClass("hide");
+      $("#fiveDay").removeClass("hide");
+      $("#cTitle").removeClass("hide");
+      $("#fTitle").removeClass("hide");
+      //Calling the Weather Function
       getCurrentWeather(search);
     }
-    searchHistoryContainer.on("click", searchHistoryClick);
     getSearchHistory();
+    $(searchHistoryContainer).on("click", searchHistoryClick)
   });
