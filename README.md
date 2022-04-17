@@ -25,5 +25,5 @@ This was a bit of a challenge for me, I had my tutor and a TA helping out with g
 I hide the current weather and five day forecast jumbotrons to give the site a cleaner look without having a city searched. Once you search for a city you should get its current weather and five day forecast. The city name should then saves to a list, that you can click on to to change to different cities .<br>
 The biggest hurdle I had was getting the five day forecast dates right. It just couldn't be as simple as the current weather one. 
 
-Here is a link to the deployed application:
+Here is a link to the deployed application:<br>
 https://rwillford.github.io/Trip-Weather-Outlook/
